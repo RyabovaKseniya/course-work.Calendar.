@@ -6,11 +6,14 @@
 
 QT       += core gui
 QT       += sql
+QT       += network
+TRANSLATIONS += calendar_ru.ts
+TRANSLATIONS += calendar_eng.ts
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 
-TRANSLATIONS += calendar_ru.ts
-TRANSLATIONS += calendar_eng.ts
+
 TARGET = Calendar
 TEMPLATE = app
 CONFIG += console
@@ -23,7 +26,9 @@ SOURCES += main.cpp\
     settingdialog.cpp \
     textconfiguratulatiodialog.cpp \
     dbmanager.cpp \
-    notificationdialog.cpp
+    notificationdialog.cpp \
+    smtp.cpp \
+    emailsenddialog.cpp
 
 HEADERS  += mainwindow.h \
     adddatadialog.h \
@@ -31,11 +36,14 @@ HEADERS  += mainwindow.h \
     settingdialog.h \
     textconfiguratulatiodialog.h \
     dbmanager.h \
-    notificationdialog.h
+    notificationdialog.h \
+    smtp.h \
+    emailsenddialog.h
 
 FORMS    += mainwindow.ui \
     adddatadialog.ui \
     helpdialog.ui \
     settingdialog.ui \
     textconfiguratulatiodialog.ui \
-    notificationdialog.ui
+    notificationdialog.ui \
+    emailsenddialog.ui

@@ -36,6 +36,8 @@ protected:
 private slots:
     void dateProcessing(const QDate & date);
     //void test();
+public slots:
+    void sendMessage(QString recipientName, QString subject, QString message);
 
     void createSettingDialog();
     void createHelpDialog();

@@ -10,6 +10,7 @@
 #include <dbmanager.h>
 #include <notificationdialog.h>
 #include <iostream>
+#include <smtp.h>
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -43,6 +44,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(this->ui->editHolidayButton, SIGNAL(clicked()), this, SLOT(createAddDataDialog()));
     connect(this->ui->choiceListHolidayDate, SIGNAL(activated(int)), this, SLOT(on_choiceListHolidayDate_activated(int)));
     connect(ui->calendarWidget, SIGNAL(clicked(QDate)), this, SLOT(dateProcessing(QDate)));
+
+    sendMessage("anfilova-nn@mail.ru", "launch success", "Hello ёпта");
 
 }
 
@@ -112,4 +115,9 @@ void MainWindow::changeEvent(QEvent *apcEvt)
     }
 }
 
+void MainWindow::sendMessage(QString recipientName, QString subject, QString message){
+    Smtp* smtp = new Smtp("congratulation.delivery@mail.ru", "Congratulation94", "smtp.mail.ru", 465);
+   // connect(smtp, SIGNAL(status(QString)), this, SLOT(mailSent(QString)));
+    smtp->sendMail("congratulation.delivery@mail.ru", recipientName , subject, message);
+}
 
