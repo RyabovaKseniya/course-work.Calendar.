@@ -9,10 +9,6 @@
 #include "textconfiguratulatiodialog.h"
 
 
-
-
-
-
 namespace Ui {
 class MainWindow;
 }
@@ -38,7 +34,7 @@ private:
 protected:
     void changeEvent(QEvent *);
 private slots:
-    //void dateProcessing(const QDate & date);
+    void dateProcessing(const QDate & date);
     //void test();
 
     void createSettingDialog();

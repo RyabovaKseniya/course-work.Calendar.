@@ -31,12 +31,12 @@ QSqlQueryModel* DBManager::getModel(int mode)
     case 0:
     {
         QDate data = QDate::currentDate();
-        model->setQuery("SELECT lastName FROM Data WHERE birthMonth = " + QString::number(data.month()));
+        model->setQuery("SELECT lastName, firstName, patronimicName, birthDay, birthMonth, birthYear  FROM Data WHERE birthMonth = " + QString::number(data.month()));
         break;
     }
     case 1:
     {
-        model->setQuery("SELECT lastName FROM Data ");
+        model->setQuery("SELECT lastName, firstName, patronimicName, birthDay, birthMonth, birthYear FROM Data ");
         break;
     }
     default:
@@ -50,6 +50,17 @@ QSqlQueryModel* DBManager::getModel(int mode)
     return model;
 }
 
+QSqlQueryModel* DBManager::getDate(int day, int month)
+{
+    db.open();
+     std::cout << "getDate" << std::endl;
+    QSqlQueryModel* model = new QSqlQueryModel();
+    model->setQuery("SELECT lastName, firstName, patronimicName, birthDay, birthMonth, birthYear  FROM Data WHERE birthMonth = " + QString::number(month) + " and birthDay = " + QString::number(day));
+
+    db.close();
+
+    return model;
+}
 
 //QSqlTableModel* DBManager::getCurrentModel()
 //{

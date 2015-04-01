@@ -22,17 +22,20 @@ SOURCES += main.cpp\
     helpdialog.cpp \
     settingdialog.cpp \
     textconfiguratulatiodialog.cpp \
-    dbmanager.cpp
+    dbmanager.cpp \
+    notificationdialog.cpp
 
 HEADERS  += mainwindow.h \
     adddatadialog.h \
     helpdialog.h \
     settingdialog.h \
     textconfiguratulatiodialog.h \
-    dbmanager.h
+    dbmanager.h \
+    notificationdialog.h
 
 FORMS    += mainwindow.ui \
     adddatadialog.ui \
     helpdialog.ui \
     settingdialog.ui \
-    textconfiguratulatiodialog.ui
+    textconfiguratulatiodialog.ui \
+    notificationdialog.ui

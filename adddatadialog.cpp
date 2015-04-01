@@ -6,6 +6,7 @@
 #include <QMessageBox>
 #include <QSqlQuery>
 #include <QDate>
+#include <iostream>
 
 
 
@@ -23,6 +24,7 @@ AddDataDialog::AddDataDialog(QWidget *parent) :
     ///@обработка нажатия на кнопку "chooseButton" и открытие окна"TextCongratulationDialog"
     connect(this->ui->chooseButton, SIGNAL(clicked()), this, SLOT(createTextCongratulationDialog()) );
     connect(this->ui->okSaveDataButton, SIGNAL(clicked()), this, SLOT(saveCloseAddDataDialog()));
+    connect(this->ui->pushButton, SIGNAL(clicked()), this, SLOT(on_pushButton_clicked()));
 
 
 }
@@ -64,6 +66,22 @@ void AddDataDialog::saveCloseAddDataDialog()
 //    QMessageBox::information(this, "error",QString("day %1 month %2 year %3 bool %4").arg(ui->dateEdit->date().day()).arg(ui->dateEdit->date().month()).arg(ui->dateEdit->date().year()).arg(query.exec()));
 }
 
+void AddDataDialog::listOfEmails(){
+    ui->choiceEmailUser->clear();
+    QList<QString> list = DBManager::getInstance()->getListOfEmails();
+    for (int i=0; i<list.length(); i++){
+        ui->choiceEmailUser->addItem(list.at(i));
+        ui->choiceEmailUser->item(i)->setCheckState(Qt::Checked);
+    }
+    getCheckedEmails();
+}
+
+void AddDataDialog::getCheckedEmails(){
+
+    QList<QListWidgetItem*> list = ui->choiceEmailUser->selectedItems();
+    std::cout << list.size() << std::endl;
+}
+
 
 void AddDataDialog::choiceListReminder(int index)
 {
@@ -78,4 +96,9 @@ void AddDataDialog::choiceListHoursReminder(const QTime &time)
 void AddDataDialog::choiceListYear()
 {
 
+}
+
+void AddDataDialog::on_pushButton_clicked()
+{
+    listOfEmails();
 }

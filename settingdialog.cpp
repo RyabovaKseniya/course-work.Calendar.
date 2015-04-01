@@ -75,6 +75,11 @@ void SettingDialog::changeEvent(QEvent *apcEvt)
     {
         std::cout << "LanguageChangeEvent!" << std::endl;
 
+        setWindowTitle(tr("Настройки"));
+        ui->tabWidget->setTabText(0, tr("Стили"));
+        ui->tabWidget->setTabText(1, tr("Языки"));
+        ui->tabWidget->setTabText(2, tr("Рассылка"));
+        ui->tabWidget->setTabText(3, tr("Уведомление"));
         ui->choosingStyleGroup->setTitle(tr("Стиль окна:"));
         ui->standartButton->setText(tr("Стандартная"));
         ui->seasonsButton->setText(tr("Времена года"));

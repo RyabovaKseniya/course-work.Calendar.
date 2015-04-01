@@ -21,6 +21,7 @@ public:
 
     /// получение модели для таблицы на главном окне снизу
     QSqlQueryModel* getModel(int mode);
+    QSqlQueryModel* getDate(int day,int month);
     ///
     //QSqlTableModel* getCurrentModel();
     /// получение самих тектов для

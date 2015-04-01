@@ -10,6 +10,12 @@
     <height>476</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>411</width>
+    <height>476</height>
+   </size>
+  </property>
   <property name="maximumSize">
    <size>
     <width>411</width>
@@ -304,25 +310,6 @@
       <property name="selectionRectVisible">
        <bool>true</bool>
       </property>
-      <item>
-       <property name="text">
-        <string>hh@ya.ru</string>
-       </property>
-       <property name="checkState">
-        <enum>Checked</enum>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>ggqq@ya.ru</string>
-       </property>
-       <property name="checkState">
-        <enum>Unchecked</enum>
-       </property>
-       <property name="flags">
-        <set>ItemIsSelectable|ItemIsUserCheckable|ItemIsEnabled</set>
-       </property>
-      </item>
      </widget>
      <widget class="QPushButton" name="deleteSaveEmailButton">
       <property name="geometry">

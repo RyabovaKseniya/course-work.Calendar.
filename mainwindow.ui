@@ -7,8 +7,20 @@
     <x>0</x>
     <y>0</y>
     <width>527</width>
-    <height>439</height>
+    <height>417</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>527</width>
+    <height>417</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>527</width>
+    <height>417</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
@@ -88,72 +100,30 @@
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="horizontalLayoutWidget">
+   <widget class="QTableView" name="displayingComingHolidaysWidget">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>210</y>
-      <width>511</width>
-      <height>161</height>
+      <y>220</y>
+      <width>509</width>
+      <height>163</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="comingHolidaysLayout">
-     <item>
-      <widget class="QGroupBox" name="displayingComingHolidaysGroup">
-       <property name="title">
-        <string>GroupBox</string>
-       </property>
-       <widget class="QComboBox" name="choiceListHolidayDate">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>511</width>
-          <height>22</height>
-         </rect>
-        </property>
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <item>
-         <property name="text">
-          <string>Дни рождения за текущий месяц</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Все дни рождения из БД</string>
-         </property>
-        </item>
-       </widget>
-       <widget class="QTableView" name="displayingComingHolidaysWidget">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>20</y>
-          <width>511</width>
-          <height>141</height>
-         </rect>
-        </property>
-       </widget>
-      </widget>
-     </item>
-    </layout>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QComboBox" name="choiceListHolidayDate">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>380</y>
-      <width>75</width>
-      <height>23</height>
+      <x>10</x>
+      <y>200</y>
+      <width>511</width>
+      <height>20</height>
      </rect>
     </property>
-    <property name="text">
-     <string>PushButton</string>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
     </property>
    </widget>
   </widget>
@@ -173,8 +143,6 @@
   <tabstop>editHolidayButton</tabstop>
   <tabstop>addHolidayButton</tabstop>
   <tabstop>calendarWidget</tabstop>
-  <tabstop>choiceListHolidayDate</tabstop>
-  <tabstop>displayingComingHolidaysWidget</tabstop>
  </tabstops>
  <resources/>
  <connections/>

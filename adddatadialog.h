@@ -24,6 +24,10 @@ public:
     explicit AddDataDialog(QWidget *parent = 0);
     ~AddDataDialog();
 
+    void listOfEmails();
+
+    void getCheckedEmails();
+
 private:
     Ui::AddDataDialog *ui;
     TextCongratulationDialog *chooseButton;
@@ -37,6 +41,7 @@ void choiceListReminder(int index);
 void choiceListHoursReminder(const QTime &time);
 void choiceListYear();
 
+void on_pushButton_clicked();
 };
 
 
