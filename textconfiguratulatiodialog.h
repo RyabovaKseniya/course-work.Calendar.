@@ -20,7 +20,7 @@ private slots:
 
     void cancelCloseTextCongratulation();
 
-    void on_choiceListPattern_activated(int arg1);
+    void getCongratulationText(int arg1);
 
     void on_openTextCongratulationDialog();
 
@@ -29,8 +29,6 @@ protected:
 
 private:
     Ui::TextCongratulationDialog *ui;
-//    QSqlDatabase db;
-//    QSqlTableModel *model;
 
 };
 

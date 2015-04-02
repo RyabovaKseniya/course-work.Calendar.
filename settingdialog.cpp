@@ -5,6 +5,7 @@
 #include <QMessageBox>
 #include <QSqlQuery>
 #include <iostream>
+#include <QDate>
 
 
 
@@ -25,8 +26,6 @@ SettingDialog::SettingDialog(QWidget *parent) :
 
 
     connect(this->ui->okSaveSettingButton, SIGNAL(clicked()), this, SLOT(okSaveSettingButton()));
-    connect(this->ui->cancelButton, SIGNAL(clicked()), this, SLOT(cancelSettingButton()));
-    connect(this->ui->applyButton, SIGNAL(clicked()), this, SLOT(applySettingButton()));
     connect(this->ui->choiceListLanguage, SIGNAL(activated(QString)), this, SLOT(on_choiceListLanguage_activated(QString)));
 
 }
@@ -76,27 +75,16 @@ void SettingDialog::changeEvent(QEvent *apcEvt)
         std::cout << "LanguageChangeEvent!" << std::endl;
 
         setWindowTitle(tr("Настройки"));
-        ui->tabWidget->setTabText(0, tr("Стили"));
         ui->tabWidget->setTabText(1, tr("Языки"));
         ui->tabWidget->setTabText(2, tr("Рассылка"));
         ui->tabWidget->setTabText(3, tr("Уведомление"));
-        ui->choosingStyleGroup->setTitle(tr("Стиль окна:"));
-        ui->standartButton->setText(tr("Стандартная"));
-        ui->seasonsButton->setText(tr("Времена года"));
-        ui->usersButton->setText(tr("Пользовательская"));
-        ui->txtClourChoice->setText(tr("Выбрать цвет окон:"));
-        ui->txtImageChoice->setText(tr("Выбрать картинку как фон:"));
-        ui->browseFileButton->setText(tr("Обзор.."));
         ui->txtLanguageChoice->setText(tr("Выбрать язык:"));
         ui->txtRemainderEmail->setText(tr("Если Вы хотите, чтобы за определенное время вам приходило напоминание о днях рождения ваших друзей и близких на вашу электронную почту, введите, пожалуйста, свой e-mail.Вы можете выбрать из списка несколько e-mail. А также удалить не используемые e-mail."));
         ui->txtAddEmail->setText(tr("Добавить e-mail:"));
         ui->txtReminderPeriod->setText(tr("Напомнить за:"));
         ui->txtTextRemainder->setText(tr("Текст напоминания:"));
         ui->txtAutoload->setText(tr("Показывать при каждом включении компьютера"));
-        ui->txtReload->setText(tr("В случае отсутствия перезагрузки в течение длительного периода показывать уведомления через каждые:"));
         ui->txtPeriod->setText(tr("Выберете, пожалуйста, за сколько дней до дня рождения показывать уведомление"));
-        ui->cancelButton->setText(tr("Отмена"));
-        ui->applyButton->setText(tr("Применить"));
 
     }
 }
@@ -106,12 +94,13 @@ void SettingDialog::on_okSaveEmailButton_clicked()
     QString email = ui->logField->text();
     DBManager::getInstance()->addRecordToPersonalEmail(email);
     ui->logField->clear();
+    fillListOfEmails();
 
 }
 
 void SettingDialog::on_tabWidget_tabBarClicked(int index)
 {
-    if (index == 2){
+    if (index == 1){
         fillListOfEmails();
     }
 }
@@ -131,3 +120,16 @@ void SettingDialog::getCheckedEmails(){
     QList<QListWidgetItem*> list = ui->emailListWidget->selectedItems();
     std::cout << list.size() << std::endl;
 }
+
+QList<QString> SettingDialog::getBPersons()
+{
+    QList < QPair < QString, QPair<int, int> > > list;
+    list = DBManager::getInstance()->getForNotification(QDate::currentDate().day(), QDate::currentDate().month());
+    QList<QString> resList;
+    for (int i=0; i<list.size(); i++){
+        resList.append(list.at(i).first);
+    }
+    return resList;
+}
+
+

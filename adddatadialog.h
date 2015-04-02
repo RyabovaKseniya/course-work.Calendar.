@@ -2,7 +2,7 @@
 #define ADDDATADIALOG_H
 
 #include <QDialog>
-#include "textconfiguratulatiodialog.h"
+
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QSqlError>
@@ -30,18 +30,18 @@ public:
 
 private:
     Ui::AddDataDialog *ui;
-    TextCongratulationDialog *chooseButton;
+
 
 
 private slots:
-void createTextCongratulationDialog();
 void saveCloseAddDataDialog();
 void choiceListReminder(int index);
 
 void choiceListHoursReminder(const QTime &time);
 void choiceListYear();
 
-void on_pushButton_clicked();
+//void on_pushButton_clicked();
+
 };
 
 

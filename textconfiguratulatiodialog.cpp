@@ -16,6 +16,7 @@ TextCongratulationDialog::TextCongratulationDialog(QWidget *parent) :
     ui->setupUi(this);
     connect(this->ui->okSaveCongratulationButton, SIGNAL(clicked()), this, SLOT(okSaveTextCongratulation()));
     connect(this->ui->cancelButton ,SIGNAL(clicked()), this, SLOT(cancelCloseTextCongratulation()));
+    connect(this->ui->choiceListPattern, SIGNAL(currentIndexChanged(int)), this, SLOT(getCongratulationText(int)));
     on_openTextCongratulationDialog();
 }
 
@@ -45,18 +46,21 @@ void TextCongratulationDialog::okSaveTextCongratulation()
 void TextCongratulationDialog::cancelCloseTextCongratulation()
 {
     close();
+
 }
 
-void TextCongratulationDialog::on_choiceListPattern_activated(const int arg1)
+void TextCongratulationDialog::getCongratulationText(const int arg1)
 {
+    /// get congratulation text for differnt group of people
     QString q = DBManager::getInstance()->getTextFor(arg1);
     ui->displayPattern->setText(q);
 }
 
 void TextCongratulationDialog::on_openTextCongratulationDialog()
 {
-    // получить модель для combobox
+/*    // получить модель для combobox
     ui->choiceListPattern->setModel(DBManager::getInstance()->listTextCongr());
     // получить тексты
     on_choiceListPattern_activated(0);
+    */
 }

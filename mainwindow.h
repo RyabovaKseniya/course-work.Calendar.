@@ -7,6 +7,8 @@
 #include "helpdialog.h"
 #include "settingdialog.h"
 #include "textconfiguratulatiodialog.h"
+#include "emailsenddialog.h"
+
 
 
 namespace Ui {
@@ -30,19 +32,22 @@ private:
     AddDataDialog *hollidayDialog;
     QSqlDatabase db;
     QSqlTableModel *model;
+    QModelIndex index;
+
 
 protected:
     void changeEvent(QEvent *);
 private slots:
     void dateProcessing(const QDate & date);
-    //void test();
+    void pressOnTableRow(QModelIndex index);
+    void deleteBPersonFromDB();
 public slots:
-    void sendMessage(QString recipientName, QString subject, QString message);
 
     void createSettingDialog();
     void createHelpDialog();
     void createAddDataDialog();
     void on_choiceListHolidayDate_activated(const int &arg1);
+
 };
 
 #endif // MAINWINDOW_H

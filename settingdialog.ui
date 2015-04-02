@@ -37,140 +37,6 @@
    <property name="currentIndex">
     <number>2</number>
    </property>
-   <widget class="QWidget" name="tabStyle">
-    <attribute name="title">
-     <string>Стили</string>
-    </attribute>
-    <widget class="QGroupBox" name="choosingStyleGroup">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>0</y>
-       <width>371</width>
-       <height>401</height>
-      </rect>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>16777215</height>
-      </size>
-     </property>
-     <property name="title">
-      <string>Стиль окна:</string>
-     </property>
-     <widget class="QWidget" name="layoutWidget_3">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>30</y>
-        <width>120</width>
-        <height>65</height>
-       </rect>
-      </property>
-      <layout class="QVBoxLayout" name="styleLayout">
-       <item>
-        <widget class="QRadioButton" name="standartButton">
-         <property name="text">
-          <string>Стандартная</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QRadioButton" name="seasonsButton">
-         <property name="text">
-          <string>Времена года</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QRadioButton" name="usersButton">
-         <property name="text">
-          <string>Пользовательская</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="layoutWidget_2">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>110</y>
-        <width>241</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <layout class="QHBoxLayout" name="colorLayout">
-       <item>
-        <widget class="QLabel" name="txtClourChoice">
-         <property name="text">
-          <string>Выбрать цвет окон:</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QComboBox" name="choiceListColour">
-         <property name="minimumSize">
-          <size>
-           <width>100</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>100</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <item>
-          <property name="text">
-           <string>Новый элемент</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Новый элемент</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="layoutWidget">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>150</y>
-        <width>241</width>
-        <height>25</height>
-       </rect>
-      </property>
-      <layout class="QHBoxLayout" name="imagesLayout">
-       <item>
-        <widget class="QLabel" name="txtImageChoice">
-         <property name="text">
-          <string>Выбрать картинку как фон:</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="browseFileButton">
-         <property name="maximumSize">
-          <size>
-           <width>60</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>Обзор..</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </widget>
-   </widget>
    <widget class="QWidget" name="tabLanguage">
     <attribute name="title">
      <string>Языки</string>
@@ -358,6 +224,17 @@
         <height>16777215</height>
        </size>
       </property>
+      <property name="html">
+       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Здраствуйте, сегодня &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;праздуют(ет) свой День Рождения! Не забудьте их(его/её) поздравить!&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
      </widget>
      <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
@@ -413,7 +290,7 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>120</y>
+        <y>60</y>
         <width>251</width>
         <height>41</height>
        </rect>
@@ -425,33 +302,7 @@
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QLabel" name="txtReload">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>60</y>
-        <width>271</width>
-        <height>52</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>В случае отсутствия перезагрузки в течение длительного периода показывать уведомления через каждые:</string>
-      </property>
-      <property name="wordWrap">
-       <bool>true</bool>
-      </property>
-     </widget>
      <widget class="QComboBox" name="choiceListPeriod">
-      <property name="geometry">
-       <rect>
-        <x>280</x>
-        <y>130</y>
-        <width>71</width>
-        <height>20</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QTimeEdit" name="timeEdit">
       <property name="geometry">
        <rect>
         <x>280</x>
@@ -493,9 +344,9 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>90</x>
+     <x>150</x>
      <y>440</y>
-     <width>239</width>
+     <width>121</width>
      <height>32</height>
     </rect>
    </property>
@@ -510,32 +361,6 @@
       </property>
       <property name="text">
        <string>OK</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="cancelButton">
-      <property name="minimumSize">
-       <size>
-        <width>40</width>
-        <height>30</height>
-       </size>
-      </property>
-      <property name="text">
-       <string>Отмена</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="applyButton">
-      <property name="minimumSize">
-       <size>
-        <width>40</width>
-        <height>30</height>
-       </size>
-      </property>
-      <property name="text">
-       <string>Применить</string>
       </property>
      </widget>
     </item>

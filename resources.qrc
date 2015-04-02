@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>resources/background.jpg</file>
+        <file>resources/pencil2.png</file>
+        <file>resources/images.jpg</file>
+        <file>resources/resycle.jpg</file>
+        <file>resources/del.png</file>
+        <file>resources/trashcan_full-alt_9674.png</file>
+        <file>resources/exit.png</file>
+        <file>resources/cross-lines.png</file>
+        <file>resources/w256h2561377939807185085happysmileystreamline2.png</file>
+    </qresource>
+</RCC>

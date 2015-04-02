@@ -2,7 +2,7 @@
 #define NOTIFICATIONDIALOG_H
 
 #include <QDialog>
-
+#include "emailsenddialog.h"
 namespace Ui {
 class NotificationDialog;
 }
@@ -15,7 +15,11 @@ public:
     explicit NotificationDialog(QWidget *parent = 0);
     ~NotificationDialog();
 
+private slots:
+    void on_pushButton_clicked();
+
 private:
+    void scanForBirthdayPerson ();
     Ui::NotificationDialog *ui;
 };
 

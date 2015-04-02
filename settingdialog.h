@@ -24,6 +24,7 @@ public:
 
     void fillListOfEmails();
     void getCheckedEmails();
+    QList<QString> getBPersons();
 
 private slots:
     void okSaveSettingButton();
@@ -37,6 +38,8 @@ private slots:
     void on_okSaveEmailButton_clicked();
 
     void on_tabWidget_tabBarClicked(int index);
+
+
 
 protected:
     void changeEvent(QEvent *apcEvt);

@@ -10,19 +10,19 @@
     <x>0</x>
     <y>0</y>
     <width>411</width>
-    <height>476</height>
+    <height>281</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>411</width>
-    <height>476</height>
+    <height>281</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>411</width>
-    <height>476</height>
+    <height>281</height>
    </size>
   </property>
   <property name="acceptDrops">
@@ -121,145 +121,18 @@
      </rect>
     </property>
     <property name="text">
-     <string>Введите пожалуйста фамилию, Имя и Отчество(не обязательно) именинника</string>
+     <string>Введите, пожалуйста, Фамилию, Имя и Отчество(не обязательно) именинника</string>
     </property>
     <property name="wordWrap">
      <bool>true</bool>
     </property>
-   </widget>
-  </widget>
-  <widget class="QGroupBox" name="reminderDateEmailGroup">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>250</y>
-     <width>389</width>
-     <height>181</height>
-    </rect>
-   </property>
-   <property name="title">
-    <string>Дополнительное напоминание</string>
-   </property>
-   <widget class="QLabel" name="txtReminderEmail">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>20</y>
-      <width>371</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Также вы можете отправить дополнительное напоминание на свою электронную почту(-ы). Пожалуйста, выберете все e-mail, на которые будет отправлено дополнительное нопоминание, а также время отправки письма с нопоминанием.</string>
-    </property>
-    <property name="wordWrap">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QListWidget" name="choiceEmailUser">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>80</y>
-      <width>191</width>
-      <height>91</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QDateEdit" name="choiceListRemindDateUser">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>80</y>
-      <width>81</width>
-      <height>22</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QTimeEdit" name="choiceListRemindTimeUser">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>110</y>
-      <width>81</width>
-      <height>22</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>150</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PushButton</string>
-    </property>
-   </widget>
-  </widget>
-  <widget class="QGroupBox" name="congratulationGroup">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>130</y>
-     <width>391</width>
-     <height>111</height>
-    </rect>
-   </property>
-   <property name="title">
-    <string>Поздравление по электронной почте</string>
-   </property>
-   <widget class="QLabel" name="txtReminderSender">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>20</y>
-      <width>361</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Вы можете поздравить именинника(-цу) по электронной почте.
-Укажите e-mail и выберете время отправки письма. Поздравление будет отправлено в день рождения в указанное Вами время</string>
-    </property>
-    <property name="wordWrap">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QWidget" name="layoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>80</y>
-      <width>343</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="congratulationLayout">
-     <item>
-      <widget class="QLineEdit" name="emailFieldSender"/>
-     </item>
-     <item>
-      <widget class="QTimeEdit" name="choiceListHoursReminder"/>
-     </item>
-     <item>
-      <widget class="QPushButton" name="chooseButton">
-       <property name="text">
-        <string>Выбрать поздравление</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
    </widget>
   </widget>
   <widget class="QPushButton" name="okSaveDataButton">
    <property name="geometry">
     <rect>
-     <x>150</x>
-     <y>440</y>
+     <x>140</x>
+     <y>240</y>
      <width>121</width>
      <height>30</height>
     </rect>
@@ -273,6 +146,51 @@
    <property name="text">
     <string>OK</string>
    </property>
+  </widget>
+  <widget class="QGroupBox" name="congratulationGroup">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>130</y>
+     <width>391</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Поздравление по электронной почте</string>
+   </property>
+   <widget class="QLabel" name="txtReminderSender">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>361</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Вы можете поздравить именинника(-цу) по электронной почте.
+Укажите e-mail. </string>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QWidget" name="layoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>60</y>
+      <width>191</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="congratulationLayout">
+     <item>
+      <widget class="QLineEdit" name="emailFieldSender"/>
+     </item>
+    </layout>
+   </widget>
   </widget>
  </widget>
  <resources/>

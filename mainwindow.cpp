@@ -11,6 +11,9 @@
 #include <notificationdialog.h>
 #include <iostream>
 #include <smtp.h>
+#include <QPalette>
+#include <QPixmap>
+#include <QBrush>
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -20,6 +23,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     ui->choiceListHolidayDate->addItem(tr("Дни рождения за текущий месяц"));
     ui->choiceListHolidayDate->addItem(tr("Все дни рождения из БД"));
+
+    QPalette palette = QWidget::palette();
+    QPixmap background = QPixmap(":/resources/background.jpg");
+    QBrush brush(background);
+    palette.setBrush(QPalette::Active,QPalette::Background, brush);
+    palette.setBrush(QPalette::Inactive,QPalette::Background, brush);
+    setPalette(palette);
 
 
     //pToolBar = new ToolBar(this);
@@ -34,19 +44,16 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->mainToolBar->setMovable(false);
 
     NotificationDialog* nd = new NotificationDialog();
-    nd->show();
 
-
+        nd->show();
 
     connect(pSettingAction, SIGNAL(triggered()), this, SLOT(createSettingDialog()));
     connect(pHelpAction, SIGNAL(triggered()), this , SLOT(createHelpDialog()));
     connect(this->ui->addHolidayButton, SIGNAL(clicked()), this, SLOT(createAddDataDialog()));
-    connect(this->ui->editHolidayButton, SIGNAL(clicked()), this, SLOT(createAddDataDialog()));
     connect(this->ui->choiceListHolidayDate, SIGNAL(activated(int)), this, SLOT(on_choiceListHolidayDate_activated(int)));
     connect(ui->calendarWidget, SIGNAL(clicked(QDate)), this, SLOT(dateProcessing(QDate)));
-
-    sendMessage("anfilova-nn@mail.ru", "launch success", "Hello ёпта");
-
+    connect(ui->displayingComingHolidaysWidget, SIGNAL(clicked(QModelIndex)),this ,SLOT(pressOnTableRow(QModelIndex)));
+    connect(ui->editHolidayButton, SIGNAL(clicked()), this, SLOT(deleteBPersonFromDB()));
 }
 
 
@@ -55,14 +62,32 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+
+
 void MainWindow::dateProcessing(const QDate & date)
 {
-
     QSqlQueryModel* model = DBManager::getInstance()->getDate(date.day(), date.month());
-    this->ui->holidaysSelectedHolidaysWidget->setModel(model);
-
+    ui->holidaysSelectedHolidaysWidget->setModel(model);
 }
 
+void MainWindow::pressOnTableRow(QModelIndex in){
+    index = in;
+    std:: cout << " pressOnTableRow" <<std::endl;
+}
+
+void MainWindow::deleteBPersonFromDB(){
+    int row = index.row();
+    QAbstractItemModel* model = ui->displayingComingHolidaysWidget->model();
+    QString lastName = model->data(model->index(row,0)).toString();
+    QString firstName = model->data( model->index(row,1)).toString();
+    QString patronimicName = model->data( model->index(row,2)).toString();
+    int day = model->data( model->index(row,3)).toInt();
+    int month = model->data( model->index(row,4)).toInt();
+    int year = model->data( model->index(row,5)).toInt();
+    DBManager::getInstance()->deleteRowFromData(lastName, firstName, patronimicName, day, month, year);
+    model->removeRow(row);
+    ui->displayingComingHolidaysWidget->setModel(model);
+}
 
 /// метод описывающий открытие окно SettingDialog
 
@@ -115,9 +140,5 @@ void MainWindow::changeEvent(QEvent *apcEvt)
     }
 }
 
-void MainWindow::sendMessage(QString recipientName, QString subject, QString message){
-    Smtp* smtp = new Smtp("congratulation.delivery@mail.ru", "Congratulation94", "smtp.mail.ru", 465);
-   // connect(smtp, SIGNAL(status(QString)), this, SLOT(mailSent(QString)));
-    smtp->sendMail("congratulation.delivery@mail.ru", recipientName , subject, message);
-}
+
 

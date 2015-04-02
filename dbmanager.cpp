@@ -53,12 +53,10 @@ QSqlQueryModel* DBManager::getModel(int mode)
 QSqlQueryModel* DBManager::getDate(int day, int month)
 {
     db.open();
-     std::cout << "getDate" << std::endl;
+    std::cout << "getDate" << std::endl;
     QSqlQueryModel* model = new QSqlQueryModel();
     model->setQuery("SELECT lastName, firstName, patronimicName, birthDay, birthMonth, birthYear  FROM Data WHERE birthMonth = " + QString::number(month) + " and birthDay = " + QString::number(day));
-
     db.close();
-
     return model;
 }
 
@@ -76,12 +74,29 @@ QSqlQueryModel* DBManager::getDate(int day, int month)
 //    return model;
 //}
 
-bool DBManager::addRecordToData(QString lastName, QString firstName, QString patronimicName, QString email, QDate date, QTime hoursReminder, QDate userReminderDate, QTime userReminderTime)
-{
+bool DBManager::deleteRowFromData(QString lastName, QString firstName, QString patronimicName, int day, int month, int year){
     db.open();
     QSqlQuery query;
-    query.prepare("INSERT INTO Data ( lastName, firstName, patronimicName, email, birthDay, birthMonth, BirthYear, timeSend, userReminderDate, userReminderTime)"
-                  "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ? )");
+    query.prepare("DELETE FROM Data WHERE lastName = :lastName and firstName = :firstName and patronimicName = :patronimicName and birthDay = :birthDay  and birthMonth = :birthMonth and birthYear = :birthYear ");
+    query.bindValue(":lastName",lastName);
+    query.bindValue(":firstName", firstName);
+    query.bindValue(":patronimicName",patronimicName);
+    query.bindValue(":birthDay", day);
+    query.bindValue(":birthMonth",month);
+    query.bindValue(":birthYear", year);
+    bool execBool = query.exec();
+    db.close();
+    return execBool;
+}
+
+
+bool DBManager::addRecordToData(QString lastName, QString firstName, QString patronimicName, QDate date, QString email)
+{
+
+    db.open();
+    QSqlQuery query;
+    query.prepare("INSERT INTO Data ( lastName, firstName, patronimicName, email, birthDay, birthMonth, BirthYear)"
+                  "VALUES(?, ?, ?, ?, ?, ?, ? )");
     query.addBindValue(lastName);
     query.addBindValue(firstName);
     query.addBindValue(patronimicName);
@@ -89,9 +104,6 @@ bool DBManager::addRecordToData(QString lastName, QString firstName, QString pat
     query.addBindValue(date.day());
     query.addBindValue(date.month());
     query.addBindValue(date.year());
-    query.addBindValue(hoursReminder);
-    query.addBindValue(userReminderDate);
-    query.addBindValue(userReminderTime);
     bool execBool = query.exec();
     db.close();
     return execBool;
@@ -135,7 +147,6 @@ QList<QString> DBManager:: getListOfEmails (){
 }
 
 
-
 QString DBManager::getTextFor(int idText)
 {
     db.open();
@@ -150,16 +161,57 @@ QString DBManager::getTextFor(int idText)
     db.close();
     return q;
 }
-///+
+
+
 QSqlQueryModel* DBManager::listTextCongr()
 {
     db.open();
-
     QSqlQueryModel* model = new QSqlQueryModel();
-
-    model->setQuery("SELECT idCongratulationsText FROM CongratulationsText ");
-
+    model->setQuery("SELECT congratulationFor FROM CongratulationsText ");
     db.close();
-
     return model;
 }
+
+
+ QList < QPair < QString, QPair<int, int> > > DBManager::getForNotification(int day, int month)
+{
+    db.open();
+    QSqlQuery query;
+    query.prepare("SELECT lastName, firstName, patronimicName, birthYear, idData FROM Data WHERE birthMonth = " + QString::number(month) + " and birthDay = " + QString::number(day));
+    QList < QPair < QString, QPair<int, int> > > list;
+
+    if (!query.exec())
+        return list;
+
+    while(query.next()){
+        QString name = query.value(0).toString() + " " + query.value(1).toString() + " " + query.value(2).toString();
+        QPair <int, int> pairYearAndId;
+        pairYearAndId.first = query.value(3).toInt();
+        pairYearAndId.second = query.value(4).toInt();
+        QPair <QString, QPair <int, int> > pairNameAndPair;
+        pairNameAndPair.first = name;
+        pairNameAndPair.second = pairYearAndId;
+        list.append(pairNameAndPair);
+    }
+
+    db.close();
+    return list;
+}
+
+ QString DBManager::email(int id)
+ {
+     std:: cout << "getEmailFromDB "<< std::endl;
+     std:: cout << "id "<< id << std::endl;
+     db.open();
+     QSqlQuery query;
+     query.prepare("SELECT email FROM Data WHERE idData = :id");
+     query.bindValue(":id", id);
+
+     if (query.exec())
+         std:: cout << "succes "<< std::endl;
+     if (query.next()){
+         return query.value(0).toString();
+     }
+     std:: cout << "bad request "<< std::endl;
+     return "";
+ }
